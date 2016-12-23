@@ -1,0 +1,54 @@
+#include<stdio.h>
+#define N 20
+#define TRUE 1
+#define FALSE 0
+
+// BOOL PALINDROME
+
+int palindrome(char* text,int len)
+{
+    if(len>1)
+    {
+        if(text[0] == text[len-1])
+        {
+            return palindrome(++text, len-2);
+        }
+        return FALSE;
+    }
+    else
+        return TRUE;
+}
+
+// INT MAIN()
+
+int main()
+{
+    printf("     /***** BOOL PALINDROME *****/\n");
+
+    char text[N];       //text
+    printf("Write a text of maximum size %i \n", N);
+    scanf("%c", &text);
+    gets(text);
+
+    //COUNTING TEXT.length()
+
+    int len=0;      //text.length()
+    int i;          //variable auxiliary
+
+    for(i=0; text[i]!='\0'; i++)
+        len++;
+
+    len-=1; //- 'ENTER'
+
+    //BOOL PALINDROME
+
+    printf("\nIs the text palindrome?\n");
+
+    if(palindrome(text, len)==TRUE)
+        printf("1 - YES\n");
+
+    else
+        printf("0 - NOPE\n");
+
+return 0;
+}
